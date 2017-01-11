@@ -23,11 +23,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, ResultActivity.class);
-
-        intent.putExtra("VALUE1", Double.parseDouble(((EditText)findViewById(R.id.editText)).getText().toString()));
-        intent.putExtra("VALUE2", Double.parseDouble(((EditText)findViewById(R.id.editText2)).getText().toString()));
-        intent.putExtra("OP", ((Button)v).getText().toString());
-        startActivity(intent);
+        String value1 = ((EditText)findViewById(R.id.editText)).getText().toString();
+        String value2 = ((EditText)findViewById(R.id.editText2)).getText().toString();
+        if (!value1.isEmpty() && !value2.isEmpty()) {
+            intent.putExtra("VALUE1", Double.parseDouble(value1));
+            intent.putExtra("VALUE2", Double.parseDouble(value2));
+            intent.putExtra("OP", ((Button) v).getText().toString());
+            startActivity(intent);
+        }
     }
 
 }
